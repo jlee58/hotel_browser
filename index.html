@@ -1,0 +1,69 @@
+<html>
+<head>
+   <script src="data.js" charset="utf-8"></script>
+   <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+<body>
+
+    <!--<div class="navbar navbar-expand-lg fixed-top navbar-dark bg-primary">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="#">Travel Guide</a>
+        </nav>
+      </div>
+    </div>-->
+
+    <div id="content"></div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script>
+     
+    //var want = [7,9,14,20,25,48,53,62,90,98,105,115,132,137,187,190,191,202,205,224,236,242,305,336,358,363,376];
+    
+    function createTable(tableData) {
+      var table = document.createElement('table');
+      table.className = "table table-hover";
+      var row = {};
+      var cell = {};
+  
+      tableData.forEach(function(rowData) {
+
+        //if (want.includes(rowData.id)){
+          row = table.insertRow(-1); // [-1] for last position in Safari
+        cell0 = row.insertCell();
+        cell0.textContent = rowData.id;
+
+        cell1 = row.insertCell();
+        cell1.textContent = rowData.name;
+
+        var tag = rowData.name + ' ';
+        tag += rowData.address?'<hr><div>' +rowData.address+ '</div>':'';
+        tag += rowData.phone?'<br><div>' +rowData.phone+ '</div>':'';
+        cell1.innerHTML = tag;
+
+        cell_img1 = row.insertCell();
+        cell_img1.innerHTML = '<img width="200" src="downloads/'+rowData.id+'/0.jpg" onerror="this.style.display=\'none\'"/>'
+        cell_img1 = row.insertCell();
+        cell_img1.innerHTML = '<img width="200" src="downloads/'+rowData.id+'/1.jpg" onerror="this.style.display=\'none\'"/>'
+        cell_img1 = row.insertCell();
+        cell_img1.innerHTML = '<img width="200" src="downloads/'+rowData.id+'/2.jpg" onerror="this.style.display=\'none\'"/>'
+        cell_img1 = row.insertCell();
+        cell_img1.innerHTML = '<img width="200" src="downloads/'+rowData.id+'/3.jpg" onerror="this.style.display=\'none\'"/>'
+        cell_img1 = row.insertCell();
+        cell_img1.innerHTML = '<img width="200" src="downloads/'+rowData.id+'/4.jpg" onerror="this.style.display=\'none\'"/>'
+
+        //}
+
+
+      });
+      // document.body.appendChild(table);
+      var contentDiv = document.getElementById("content"); 
+      contentDiv.appendChild(table);
+    }
+    createTable(data);
+</script>  
+</html>
